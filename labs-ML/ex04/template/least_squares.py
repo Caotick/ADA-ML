@@ -8,10 +8,7 @@ import numpy as np
 
 
 def least_squares(y, tx):
-    """calculate the least squares."""
-    # ***************************************************
-    # INSERT YOUR CODE HERE
-    # least squares: TODO
-    # returns mse, and optimal weights
-    # ***************************************************
-    raise NotImplementedError
+    """calculate the least squares solution."""
+    w = np.linalg.solve(np.transpose(tx).dot(tx), np.transpose(tx).dot(y))
+    e = y - tx.dot(w)
+    return w, np.transpose(e).dot(e) / (2*y.shape[0])
